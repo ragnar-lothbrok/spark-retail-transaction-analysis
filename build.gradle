@@ -32,7 +32,9 @@ repositories {
 }
 
 dependencies {
-
+    compile('org.apache.hbase:hbase-client:2.1.0') {
+        exclude group: 'com.fasterxml.jackson.core'
+    }
     compile 'org.apache.spark:spark-mllib_2.11:2.1.0'
     compile 'org.apache.spark:spark-sql_2.11:2.1.0'
     compile 'org.apache.spark:spark-streaming-flume-assembly_2.11:2.1.0'
@@ -41,6 +43,7 @@ dependencies {
     compile 'org.apache.spark:spark-catalyst_2.11:2.1.0'
     compile 'org.apache.spark:spark-streaming_2.11:2.1.0'
     compile 'org.apache.spark:spark-core_2.11:2.1.0'
+    compile 'org.apache.spark:spark-streaming-kafka-0-10_2.11:2.1.0'
 
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
 }

@@ -20,6 +20,13 @@ public class TimeUtils {
         return cal.get(Calendar.MONTH);
     }
 
+    public static Integer getYear(Timestamp timestamp) {
+        long time = timestamp.getTime();
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(time);
+        return cal.get(Calendar.YEAR);
+    }
+
     public static String numberToMonthName(int number) {
         return monthName[number];
     }

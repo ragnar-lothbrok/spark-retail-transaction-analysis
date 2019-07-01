@@ -26,6 +26,12 @@ public class UDFUtils {
         }
     };
 
+    public static UDF1 toYear = new UDF1<Timestamp, Integer>() {
+        public Integer call(final Timestamp timestamp) throws Exception {
+            return TimeUtils.getYear(timestamp);
+        }
+    };
+
     public static UDF1 toQuarter = new UDF1<Timestamp, Integer>() {
         public Integer call(final Timestamp timestamp) throws Exception {
             return TimeUtils.getQuater(timestamp);
@@ -59,6 +65,7 @@ public class UDFUtils {
 
     public static void registerUDFs(SparkSession sparkSession) {
         sparkSession.udf().register("toMonth", UDFUtils.toMonth, DataTypes.IntegerType);
+        sparkSession.udf().register("toYear", UDFUtils.toYear, DataTypes.IntegerType);
         sparkSession.udf().register("toMonthName", UDFUtils.toMonthName, DataTypes.StringType);
 
         sparkSession.udf().register("toQuarter", UDFUtils.toQuarter, DataTypes.IntegerType);
