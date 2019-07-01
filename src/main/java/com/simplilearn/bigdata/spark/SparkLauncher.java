@@ -238,7 +238,17 @@ public class SparkLauncher {
                 .groupBy("ProductCode", "Description")
                 .agg(functions.sum("Quantity").as("Quantity"))
                 .sort(functions.desc("Quantity")).limit(5);
-        print("Top 5 product which has maximum orders = ",dataset.collectAsList().toArray(), dataset.columns());
+
+
+        dataset = dataset.withColumn("Month", functions.callUDF("toMonth", dataset.col("InvoiceDate")));
+        dataset = dataset.select("Month", "ProductCode", "Description", "Quantity")
+                .groupBy("Month", "ProductCode", "Description")
+                .agg(functions.sum("Quantity").as("Quantity"));
+        for(int i=0 ;i < 12; i++) {
+            Dataset<Row> topProductsSoldMonthly = dataset.filter("month = "+i).sort(functions.desc("Quantity")).limit(5)
+                    .withColumn("MonthName", functions.callUDF("toMonthName", dataset.col("Month"))).drop("Month");
+            print("Top 5 product which has maximum orders = ",topProductsSoldMonthly.collectAsList().toArray(), topProductsSoldMonthly.columns());
+        }
     }
 
     /**
