@@ -27,8 +27,8 @@ public class SparkStreamingTrendingCategoryMonthlyApp {
         String brokerUrl = args[0];
         String topicName = args[1];
         String groupId = args[2];
-        Integer durationInMinutes = Integer.parseInt(args[3]);
-        String sparkMaster = args[4];
+        String sparkMaster = args[3];
+        Integer durationInMinutes = Integer.parseInt(args[4]);
         Integer N = Integer.parseInt(args[5]);
 
         SparkConf sparkConf = new SparkConf();
@@ -65,7 +65,6 @@ public class SparkStreamingTrendingCategoryMonthlyApp {
         JavaPairDStream<String, Integer> categoryOrderCount = allProducts
                 .mapToPair(x -> new Tuple2<String, Integer>(x.split(",")[3], Integer.parseInt(x.split(",")[8])))
                 .reduceByKey((i1, i2) -> i1 + i2);
-        System.out.println("Top " + N + " Category's Order Count ");
         categoryOrderCount.print(N);
 
         streamingContext.start();
