@@ -35,3 +35,9 @@ A spark project with Java.
 
 
 /usr/local/spark-2.2.0-bin-hadoop2.6/bin/spark-submit --master yarn --deploy-mode cluster --class com.simplilearn.bigdata.spark.SparkStreamingTrendingBrandMonthlyApp spark-retail-transaction-analysis-1.0-SNAPSHOT-all.jar m2-kafka:9092  transaction_data SparkStreamingTrendingBrandMonthlyApp yarn 43200 5
+
+### Checking Spark Job Logs
+yarn logs -appOwner <Hadoop_user> -applicationId application_<job
+
+###  Check job on yarn
+http://<namenode_url>:8088/cluster
