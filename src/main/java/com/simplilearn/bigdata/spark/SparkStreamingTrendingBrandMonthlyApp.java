@@ -29,8 +29,8 @@ public class SparkStreamingTrendingBrandMonthlyApp {
         String brokerUrl = args[0];
         String topicName = args[1];
         String groupId = args[2];
-        Integer durationInMinutes = Integer.parseInt(args[3]);
-        String sparkMaster = args[4];
+        String sparkMaster = args[3];
+        Integer durationInMinutes = Integer.parseInt(args[4]);
         Integer N = Integer.parseInt(args[5]);
 
         SparkConf sparkConf = new SparkConf();
