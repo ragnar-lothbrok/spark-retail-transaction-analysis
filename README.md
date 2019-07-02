@@ -1,4 +1,4 @@
-# _Spark-Gradle-Template_
+# _Spark-Gradle_
 A spark project with Java.
 
 ## Prerequisites
