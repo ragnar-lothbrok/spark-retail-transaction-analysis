@@ -23,6 +23,7 @@ public class SparkLauncher {
         String master = args[1];
 
         SparkSession sparkSession = getSparkSession("spark-retail-transaction-analysis", master);
+//        unionAllTransactions(sparkSession);
         Dataset<Row> dataset = readFile(inputPath,readWithHeader(sparkSession));
 
         topFiveBrandsSoldMost(dataset);
@@ -290,13 +291,17 @@ public class SparkLauncher {
 
     @SuppressWarnings("unused")
     private static void unionAllTransactions(SparkSession sparkSession) {
+//        String filePaths[] = {
+//                "/Users/Downloads/dataset/all_electronics_transaction.csv",
+//                "/Users/Downloads/dataset/all_men_transaction.csv",
+//                "/Users/Downloads/dataset/all_women_transaction.csv",
+//                "/Users/Downloads/dataset/all_mobile_phones_transaction.csv"
+//        };
+
         String filePaths[] = {
-                "/Users/Downloads/dataset/all_electronics_transaction.csv",
-                "/Users/Downloads/dataset/all_men_transaction.csv",
-                "/Users/Downloads/dataset/all_women_transaction.csv",
-                "/Users/Downloads/dataset/all_mobile_phones_transaction.csv"
+                "/Users/Downloads/dataset/complete/all_transaction_1.csv"
         };
-        String outputPath = "/Users/Downloads/dataset/complete";
+        String outputPath = "/Users/Downloads/dataset/complete_1";
         unionAllFiles(sparkSession, filePaths, outputPath);
     }
 
