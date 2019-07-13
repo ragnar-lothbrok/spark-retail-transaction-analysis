@@ -118,7 +118,7 @@ public class PersistSparkLauncher {
                     Result result = table.get(get);
                     if(result.size() == 0) {
                         Put put = new Put(rowKey);
-                        put.addColumn(Bytes.toBytes("brand_stats"), Bytes.toBytes("data"), Bytes.toBytes(((Long)row.get(2))));
+                        put.addColumn(Bytes.toBytes("brand_stats"), Bytes.toBytes("data"), Bytes.toBytes((((Long)row.get(2))).toString()));
                         table.put(put);
                     }
                 }finally {
@@ -159,7 +159,7 @@ public class PersistSparkLauncher {
                     Result result = table.get(get);
                     if(result.size() == 0) {
                         Put put = new Put(rowKey);
-                        put.addColumn(Bytes.toBytes("brand_stats"), Bytes.toBytes("data"), Bytes.toBytes(((Double)row.get(2))));
+                        put.addColumn(Bytes.toBytes("brand_stats"), Bytes.toBytes("data"), Bytes.toBytes(((Double)row.get(2)).toString()));
                         table.put(put);
                     }
                 }finally {
@@ -199,7 +199,7 @@ public class PersistSparkLauncher {
                     Result result = table.get(get);
                     if(result.size() == 0) {
                         Put put = new Put(rowKey);
-                        put.addColumn(Bytes.toBytes("category_stats"), Bytes.toBytes("data"), Bytes.toBytes(((Long)row.get(2))));
+                        put.addColumn(Bytes.toBytes("category_stats"), Bytes.toBytes("data"), Bytes.toBytes((((Long)row.get(2)).toString())));
                         table.put(put);
                     }
                 }finally {
@@ -240,7 +240,7 @@ public class PersistSparkLauncher {
                     Result result = table.get(get);
                     if(result.size() == 0) {
                         Put put = new Put(rowKey);
-                        put.addColumn(Bytes.toBytes("category_stats"), Bytes.toBytes("data"), Bytes.toBytes(((Double)row.get(2))));
+                        put.addColumn(Bytes.toBytes("category_stats"), Bytes.toBytes("data"), Bytes.toBytes(((Double)row.get(2)).toString()));
                         table.put(put);
                     }
                 }finally {
